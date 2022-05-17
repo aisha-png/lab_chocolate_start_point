@@ -25,6 +25,7 @@ public class ChocolateController {
             @RequestParam(required = false, name = "name") String name){
         return new ResponseEntity<>(chocolateRepository.findAll(), HttpStatus.OK);
     }
+
 //    SHOW ROUTE
 
     @GetMapping(value = "/{id}")//localhost:8080/chocolates/1
@@ -32,6 +33,13 @@ public class ChocolateController {
         return new ResponseEntity<>(chocolateRepository.findById(id), HttpStatus.OK);
     }
 
+//    POST
+
+    @PostMapping
+    public ResponseEntity<Chocolate> createChocolate(@RequestBody Chocolate newChocolate){
+        chocolateRepository.save(newChocolate);
+        return new ResponseEntity<>(newChocolate, HttpStatus.CREATED);
+    }
 
 
 }
