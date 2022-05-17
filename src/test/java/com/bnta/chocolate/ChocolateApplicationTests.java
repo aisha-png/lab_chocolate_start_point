@@ -13,10 +13,18 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @SpringBootTest
 class ChocolateApplicationTests {
 
+	@Autowired
+	ChocolateRepository chocolateRepository;
+
 
 	@Test
 	void contextLoads() {
 	}
 
+	@Test
+	public void canFindBuenoInChocolates(){
+		List<Chocolate> found = chocolateRepository.findChocolateByName("Bueno");
+		assertThat(found.size()).isEqualTo(2);
+	}
 	
 }

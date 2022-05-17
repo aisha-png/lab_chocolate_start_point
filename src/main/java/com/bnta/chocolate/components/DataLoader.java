@@ -39,7 +39,7 @@ public class DataLoader implements ApplicationRunner {
         Estate estate2 = new Estate("Rob", "Canada");
         estateRepository.save(estate2);
 
-        Chocolate chocolate5 = new Chocolate("Tim", 60, estate2);
+        Chocolate chocolate5 = new Chocolate("Bueno", 60, estate2);
         chocolateRepository.save(chocolate5);
 
         Chocolate chocolate6 = new Chocolate("Pam", 70, estate2);

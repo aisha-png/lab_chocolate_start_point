@@ -20,9 +20,19 @@ public class ChocolateController {
 
 //    INDEX
 
-    @GetMapping//localhost:8080/chocolates
-    public ResponseEntity<List<Chocolate>> getAllChocolateName(
-            @RequestParam(required = false, name = "name") String name){
+//    @GetMapping//localhost:8080/chocolates
+//    public ResponseEntity<List<Chocolate>> getAllChocolateName(
+//            @RequestParam(required = false, name = "name") String name){
+//        return new ResponseEntity<>(chocolateRepository.findAll(), HttpStatus.OK);
+//    }
+
+    @GetMapping
+    public ResponseEntity<List<Chocolate>> getAllChocolatesAndFilter(
+            @RequestParam(required = false, name = "name") String name
+    ){
+        if (name != null){
+            return new ResponseEntity<>(chocolateRepository.findChocolateByName(name), HttpStatus.OK);
+        }
         return new ResponseEntity<>(chocolateRepository.findAll(), HttpStatus.OK);
     }
 
